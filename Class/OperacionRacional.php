@@ -22,6 +22,9 @@ class OperacionRacional extends Operacion {
      * @return string|void devolverá la cadena de caracteres de la expresión  que luego mostraré     *
      */
     public function __toString() {
+        $resultado = parent::__toString();
+        $resultado.= $this->opera();
+        return $resultado;
 
     }
 

@@ -23,14 +23,16 @@ abstract class Operacion {
          */
         /*Con la intención de ayudar aporto algunas
         expresiones regulares que puedes usar*/
-        $numReal = '[0-9]+(\.[0-9]*)?';
+        $numReal = '[0-9]+(\.[0-9]+)?';
         $numEntero = '[0-9]+';
-        $op = '[\+|\-|\*|\/]';
         $numRacional = '[0-9]+\/[1-9][0-9]*';
+        $opReal = '[\+|\-|\*|\/]';
+        $opRacional = '[\+|\-|\*|\:]';
+
 
         //De esta forma,  podemos decir cuándo tendríamos una expresión real
 
-        $real = "/^$numReal$op$numReal$/";
+        $real = "/^$numReal$opReal$numReal$/";
         if (preg_match($real, $operacion))
             self::$tipo= Operacion::REAL;
 

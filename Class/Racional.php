@@ -66,7 +66,7 @@ class Racional {
     public function simplificar()
     {
         $mcd = $this->mcd();
-        return new Raciona ($this->num/$mcd, $this->den/$ºmcd)
+        return new Raciona ($this->num/$mcd, $this->den/$mcd);
     }
 
     private function mcd (){
