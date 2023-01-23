@@ -72,7 +72,7 @@ if (isset($_POST['enviar'])) {
             <input type="submit" name="enviar" value="Calcular">
             <?php
             if (isset($_POST['enviar'])) {
-                echo "<label class='destacado'>$operacionNum</label>";
+                echo "<label class='destacado'>$operacion</label>";
             }
             ?>
         </form>
