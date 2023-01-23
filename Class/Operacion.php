@@ -6,9 +6,6 @@ abstract class Operacion {
     protected $op1;
     protected $op2;
     protected $operador;
-    protected $operacion;
-    static protected $tipo;
-
     const RACIONAL = 1;
     const REAL = 2;
     const ERROR = -1;
@@ -24,18 +21,19 @@ abstract class Operacion {
          *
          *
          */
-        /*Con la intención de ayudar aporto algunas expresiones regulares que puedes usar*/
+        /*Con la intención de ayudar aporto algunas
+        expresiones regulares que puedes usar*/
         $numReal = '[0-9]+(\.[0-9]*)?';
         $numEntero = '[0-9]+';
         $op = '[\+|\-|\*|\/]';
-        $numRacional = '[0-9]+\/[0-9]+';
+        $numRacional = '[0-9]+\/[1-9][0-9]*';
 
         //De esta forma,  podemos decir cuándo tendríamos una expresión real
 
-        $exp = "/^$numReal$op$numReal$/";
-        if (preg_match($exp, $operacion)) {
-            self::$tipo = Operacion::REAL;
-        }
+        $real = "/^$numReal$op$numReal$/";
+        if (preg_match($real, $operacion))
+            self::$tipo= Operacion::REAL;
+
 
         //Continúa poniendo aquí el código para evaluar todas las expresiones que faltan
 
@@ -55,46 +53,27 @@ abstract class Operacion {
     public function __construct($operacion) {
 
 
-        $this->operacion = $operacion;
         $this->operador = $this->obtenerOperador($operacion);
-        $this->op1 = $this->obtenerOperador1($operacion);
-        $this->op2 = $this->obtenerOperador2($operacion);
+        //Asigna valores a estos atributos.
+        $this->op1 ;
+        $this->op2 ;
     }
 
-    private function obtenerOperador1($operacion) {
-        $pos = strpos($operacion, $this->operador);
-        return(substr($operacion, 0, $pos));
-    }
 
-    private function obtenerOperador2($operacion) {
-        $pos = strpos($operacion, $this->operador);
-        return (substr($operacion, $pos + 1));
-    }
-
+    /*
+     * Este método os lo paso implementado
+     * */
     private function obtenerOperador($operacion) {
-        $pos = FALSE;
-        if (($pos = strpos($operacion, "+")) !== FALSE) {
-            $this->tipo = (strpos($operacion, "/")) ? $this::RACIONAL : $this::REAL;
-            return "+";
-        }
-        if (($pos = strpos($operacion, "-")) !== FALSE) {
-            $this->tipo = (strpos($operacion, "/")) ? $this::RACIONAL : $this::REAL;
-
-            return "-";
-        }
-        if (($pos = strpos($operacion, "*")) !== FALSE) {
-            $this->tipo = (strpos($operacion, "/")) ? $this::RACIONAL : $this::REAL;
-            return "*";
-        }
-        if (($pos = strpos($operacion, ":")) !== FALSE) {
-            $this->tipo = $this::RACIONAL;
-            return ":";
-        }
-        if (($pos = strpos($operacion, "/")) !== FALSE) {
-            $this->tipo = $this::REAL;
-            return "/";
-        }
-        return $pos;
+        if (strpos($operacion ,'+')!==false)
+            return '+';
+        if (strpos($operacion ,'-')!==false)
+            return '-';
+        if (strpos($operacion ,'*')!==false)
+            return '*';
+        if (strpos($operacion ,':')!==false)
+            return ':';
+        if (strpos($operacion ,'/')!==false)
+            return '/';
     }
 
     public function getOp1() {
@@ -118,14 +97,15 @@ abstract class Operacion {
     }
 
     public function describe() {
-        $operacion = "<tr><th>Operando 1 </th> <th> $this->op1</th></tr>";
-        $operacion.="<tr><th>Operando 2 </th> <th> $this->op2</th></tr>";
-        $operacion.="<tr><th>Operación </th> <th> $this->operador</th></tr>";
+        $operacion = "<table border=1><tr><th>Concepto</th> <th>Valores</th></tr>";
+        $operacion .= "<tr><td>Operando 1</td><td>$this->op1</td></tr>";
+        $operacion.="<tr><td>Operando 2</td><td>$this->op2</td></tr>";
+        $operacion.="<tr><td>Operación</td><td>$this->operador</td></tr>";
         if (self::$tipo == Operacion::RACIONAL)
             $tipo = "Racional";
         else
             $tipo = "Real";
-        $operacion.="<tr><th>Tipo de operacion  </th> <th> $tipo</th></tr>";
+        $operacion.="<tr><td>Tipo de operacion</td><td>$tipo</td></tr>";
         return $operacion;
     }
 

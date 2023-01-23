@@ -65,6 +65,12 @@ class Racional {
      */
     public function simplificar()
     {
+        $mcd = $this->mcd();
+        return new Raciona ($this->num/$mcd, $this->den/$ºmcd)
+    }
+
+    private function mcd (){
+//Implementa el método para obtener el mcd de $this->num y $this->den
 
     }
 }

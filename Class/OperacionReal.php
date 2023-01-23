@@ -34,11 +34,9 @@ class OperacionReal extends Operacion {
      * En el ejemplo de ejecución lo puedes ver en forma de tabla después de ejecutarla
      */
     public function describe() {
-        $tabla_rtdo = "<table border=1><tr><th>Cocepto</th> <th>Valores</th></tr>";
-
-        //Escribe el resto de código para retornar la información necesaria
-
-        return $tabla_rtdo;
+        $operacion = parent::describe();
+        //Agrega la informacion de describe para este caso
+        return $operacion;
     }
 
 

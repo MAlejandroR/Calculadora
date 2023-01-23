@@ -1,60 +1,96 @@
-fieldset{
-    border: 0.25em solid;
-    align : center;
-    position: absolute;
-    left: 55%;
-    top: 20%;
-    margin-left: -115px;
-    margin-top: -80px;
-    padding:10px;
-    background-color: #eee;
-}
-fieldset#rtdo{
-    border: 0.25em solid;
-    position: absolute;
-    left: 55%;
-    top: 55%;
-    padding:10px;
-    background-color: #eee;
-}
-fieldset#ayuda{
-    border: 0.25em solid;
-    position: absolute;
-    left: 10%;
-    top: 20%;
-    padding:10px;
-    background-color: #eee;
+body {
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+	font-family: Ubuntu, 'Segoe UI', Arial, sans-serif;
+	color: #212529;
 }
 
-legend{
-    font-size: 2em;
-    color: green;
-    font-weight: bold;
+header {
+    margin-bottom: -20px;
 }
+
+main, aside {
+    float: left;
+    width: 48%;
+    margin: 1%;
+    margin-top: 0;
+}
+
+footer {
+    width: 100%;
+	font-size: 0.8em;
+	color: #666;
+	text-align: right;
+	clear: both;
+}
+
+fieldset {
+	padding: 3%;
+    border-radius: 10px;
+    margin: 20px auto;
+    background-color: #eee;
+	border: 2px solid #0b5485;
+}
+
 input[type=submit] {
-    padding:5px 15px 10px 10px;
+    font-size: 1em;
+    padding:5px 15px;
+    border:2 ;
     background:#ccc;
-    border:2;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 5px;
-    margin: 1em;
-    font-size: 1em;
+    border-radius: 10px;
+    margin: 10px;
+ 
 }
-label{
+ 
+legend{
+    font-size: 1.1em;
     font-weight: bold;
-    font-size : 1.5em;
-    margin: 0.65em;
-
-}
-input[type=text]{
-    font-weight: bold;
-    font-size : 1.5em;
-    padding: 1em 1em 1em 1em;
-    margin: 1em 1em 1em 1em;
-}
-#texhelp{
-    font-size : 1.2em;
 }
 
+table {
+    border-collapse: collapse;
+    background-color: white;
+}
 
+td, th {
+    padding: 10px;
+}
+
+th {
+    color: white;
+    background-color: #0b5485; 
+}
+
+td:first-child {
+    font-weight: 700;
+}
+
+td:nth-child(2) {
+    text-align: center;
+}
+
+/*-------------------------------------------------*/
+ 
+.destacado {
+	color: #0b5485;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.destacado span {
+	color: black;
+	font-size: 20px;
+}
+
+/*-------------------------------------------------*/
+
+@media (max-width: 1080px) {
+    main, aside {
+        float: left;
+        width: 100%;
+        margin: 1% auto;
+    }
+}
